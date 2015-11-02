@@ -66,6 +66,10 @@ enum ApiMethodDefaults {
     }
 }
 
+
+/*
+    Struct used to hold basic information about request - req/response type and url
+*/
 struct ApiMethodType {
 
     var url: String
@@ -89,6 +93,9 @@ struct ApiMethodType {
     }
 }
 
+/*
+    Generalized response from API - always have some object (array, class, etc.) and sometimes info (i.e. pagination)
+*/
 public struct ParseResponse {
     let object: AnyObject?
     let info: AnyObject?
@@ -99,6 +106,9 @@ public struct ParseResponse {
     }
 }
 
+/*
+    Helper struct for serializing Api Parameters
+*/
 public struct ApiParameter {
     let key: String
     let value: AnyObject
@@ -109,6 +119,12 @@ public struct ApiParameter {
     }
 }
 
+/*
+    Struct that contains all the information about Api Method/Api Call
+    - type is a struct containing info about request/response type (for example GET/JSON etc.) and url
+    - parameters are additional parameters which will be added to request (as a body to POST and as URL params to a GET request)
+    - parser is a closure responsible for parsing succesfull requests. It's usually defined as a constant in ABModelAPIParser class
+*/
 public struct ApiMethod {
 
     let type: ApiMethodType
@@ -176,12 +192,22 @@ public struct ApiMethod {
 
 // MARK: Api Calls & API Singleton
 
+/*
+    Main singleton for performing all the requests
+    - can define request policy (security, chaining, concurrency etc).
+    - perform/validates requests
+*/
 public class ABModelAPI {
 
     static let sharedInstance = ABModelAPI()
 
     public init() {
-
+        // Setup security protocols for whole app, possibly add other settings (beware of app transport security)
+        _ = ServerTrustPolicy.PinCertificates(
+            certificates: ServerTrustPolicy.certificatesInBundle(),
+            validateCertificateChain: true,
+            validateHost: true
+        )
     }
 
     func call(method: ApiMethod, success: (response: ParseResponse) -> Void, failure: (error: NSError?) -> Void) {
@@ -215,7 +241,7 @@ public class ABModelAPI {
                             let parseResult = parser(responseObject: response.result.value)
                             success(response: parseResult)
                         } else {
-                            // NO PARSING PROVIDED FROM ApiMethod
+                            // NO PARSING PROVIDED FROM ApiMethod -> return nothing
                             let emptyParseResult = ParseResponse(object: nil, info: nil)
                             success(response: emptyParseResult)
                         }

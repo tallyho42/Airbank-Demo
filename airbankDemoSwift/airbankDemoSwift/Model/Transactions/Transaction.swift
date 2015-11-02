@@ -59,6 +59,9 @@ public class Transaction: ApiGeneralObjectProtocol {
     var contraAccountName:String? = nil
     var contraBankCode:String? = nil
 
+    /*
+        This function is responsible for API parsing
+    */
     required public init?(apiDict: AnyObject?) {
 
         var apiId: Int? = nil
@@ -88,6 +91,10 @@ public class Transaction: ApiGeneralObjectProtocol {
         }
     }
 
+
+    /*
+        This function is responsible for parsing detail (other properties will not be initialized). Resulting object will be just a dummy containing info about detail only.
+    */
     public init?(detailApiDict: AnyObject?) {
         self.id = 0
         self.direction = .Incoming
@@ -116,6 +123,9 @@ public class Transaction: ApiGeneralObjectProtocol {
         }
     }
 
+    /*
+        Joins detail and previously loaded transaction
+    */
     func appendDetailedTransaction(detailedTransaction: Transaction) {
         self.contraAccountNumber = detailedTransaction.contraAccountNumber
         self.contraAccountName = detailedTransaction.contraAccountName
