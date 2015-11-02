@@ -55,6 +55,8 @@ public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableVie
         } else if indexPath.row == 1 {
             let cellDetail = tableView.dequeueReusableCellWithIdentifier("CellDetail", forIndexPath: indexPath) as! ABTransactionDetailCell
 
+            cellDetail.configure()
+
             cell = cellDetail
         }
 
