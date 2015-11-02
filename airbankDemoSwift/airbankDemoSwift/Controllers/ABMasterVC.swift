@@ -40,6 +40,17 @@ class ABMasterVC: UIViewController {
 
     func configureNavigationBar() {
 
-    }
+        self.navigationController?.navigationBar.barTintColor = kColorNavBarBackground
+        self.navigationController?.navigationBar.tintColor = kColorNavBarTint
 
+        if let title = self.titleForNavBar {
+            let lblTitle = UILabel(frame:CGRectMake(0, 0, 200, 40))
+            lblTitle.backgroundColor = UIColor.clearColor()
+            lblTitle.textColor = kColorNavBarTint
+            lblTitle.font = fontBold(20.0)
+            lblTitle.textAlignment = .Center
+            lblTitle.text = title
+            self.navigationItem.titleView = lblTitle
+        }
+    }
 }

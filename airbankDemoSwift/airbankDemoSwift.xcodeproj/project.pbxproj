@@ -17,6 +17,7 @@
 		D70BA0571BE768C800CE3BE4 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA0561BE768C800CE3BE4 /* Transaction.swift */; };
 		D70BA0591BE768D900CE3BE4 /* ABModelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA0581BE768D900CE3BE4 /* ABModelAPI.swift */; };
 		D70BA05C1BE76B9200CE3BE4 /* ABLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA05B1BE76B9200CE3BE4 /* ABLog.swift */; };
+		D70BA05F1BE76F9200CE3BE4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA05E1BE76F9200CE3BE4 /* Constants.swift */; };
 		D7CCFD621BE7606C00A0F93E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCFD611BE7606C00A0F93E /* AppDelegate.swift */; };
 		D7CCFD671BE7606C00A0F93E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7CCFD651BE7606C00A0F93E /* Main.storyboard */; };
 		D7CCFD691BE7606C00A0F93E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7CCFD681BE7606C00A0F93E /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		D70BA0561BE768C800CE3BE4 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = Model/Transactions/Transaction.swift; sourceTree = "<group>"; };
 		D70BA0581BE768D900CE3BE4 /* ABModelAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABModelAPI.swift; path = Model/ABModelAPI.swift; sourceTree = "<group>"; };
 		D70BA05B1BE76B9200CE3BE4 /* ABLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ABLog.swift; path = Libraries/ABLog.swift; sourceTree = "<group>"; };
+		D70BA05E1BE76F9200CE3BE4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Other/Constants.swift; sourceTree = "<group>"; };
 		D7CCFD5E1BE7606C00A0F93E /* airbankDemoSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airbankDemoSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7CCFD611BE7606C00A0F93E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7CCFD661BE7606C00A0F93E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -165,6 +167,14 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
+		D70BA05D1BE76F6F00CE3BE4 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				D70BA05E1BE76F9200CE3BE4 /* Constants.swift */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		D7CCFD551BE7606C00A0F93E = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +202,7 @@
 			children = (
 				D70BA05A1BE76B0000CE3BE4 /* Libraries */,
 				D70BA0441BE7673700CE3BE4 /* Model */,
+				D70BA05D1BE76F6F00CE3BE4 /* Other */,
 				D70BA0461BE7674300CE3BE4 /* Controllers */,
 				D70BA0451BE7673E00CE3BE4 /* Views */,
 				D7CCFD611BE7606C00A0F93E /* AppDelegate.swift */,
@@ -413,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D70BA0481BE767E400CE3BE4 /* ABMasterVC.swift in Sources */,
+				D70BA05F1BE76F9200CE3BE4 /* Constants.swift in Sources */,
 				D70BA0591BE768D900CE3BE4 /* ABModelAPI.swift in Sources */,
 				D70BA0511BE7688000CE3BE4 /* ABMasterCell.swift in Sources */,
 				D70BA04D1BE7681700CE3BE4 /* ABTransactionsListVC.swift in Sources */,
