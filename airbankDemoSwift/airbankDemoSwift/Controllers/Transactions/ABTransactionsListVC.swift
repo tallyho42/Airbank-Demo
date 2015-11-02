@@ -11,6 +11,7 @@ import UIKit
 class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: ABMasterTableView!
+    var refreshControl:UIRefreshControl!
 
     var transactions: [Transaction] = [Transaction]()
     var rowCount: Int {
@@ -25,21 +26,38 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
 
         self.tableView.registerNib(UINib(nibName: "ABTransactionListCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CellTransaction")
 
-        ABModelAPI.sharedInstance.call(ApiMethod(defaults: ApiMethodDefaults.TransactionsList),
-        success: { response in
-            if let arrTransactions = response.object as? [Transaction] {
-                self.transactions = arrTransactions
-                self.tableView.reloadData()
-            }
-        },
-        failure: { error in
-            // display error ...
-        })
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
+
+        self.loadList()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: Loading & refresh control
+
+    func loadList() {
+        ABModelAPI.sharedInstance.call(ApiMethod(defaults: ApiMethodDefaults.TransactionsList),
+            success: { response in
+                if let arrTransactions = response.object as? [Transaction] {
+                    self.transactions = arrTransactions
+                    self.refreshControl.endRefreshing()
+                    self.tableView.reloadData()
+                }
+            },
+            failure: { error in
+                self.refreshControl.endRefreshing()
+                // TODO: display error ...
+        })
+    }
+
+    func refresh(sender:AnyObject)
+    {
+        self.loadList()
     }
 
     // MARK: TableView Data Source
