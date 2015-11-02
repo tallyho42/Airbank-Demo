@@ -10,7 +10,7 @@ import UIKit
 
 class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: ABMasterTableView!
     
     override func viewDidLoad() {
 
