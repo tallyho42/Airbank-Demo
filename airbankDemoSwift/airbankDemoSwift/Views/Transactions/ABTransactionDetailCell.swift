@@ -10,6 +10,9 @@ import UIKit
 
 class ABTransactionDetailCell: ABMasterCell {
 
+    @IBOutlet weak var viewLoading: UIView!
+    @IBOutlet weak var viewDetail: UIView!
+
     @IBOutlet weak var lblAccountNumberTitle: UILabel!
     @IBOutlet weak var lblAccountNumberValue: UILabel!
     @IBOutlet weak var lblNameTitle: UILabel!
@@ -22,6 +25,24 @@ class ABTransactionDetailCell: ABMasterCell {
     }
 
     func displayLoadingOrDetail(transaction: Transaction) {
+        if transaction.loadedDetail {
+            self.viewDetail.hidden = false
+            self.viewLoading.hidden = true
 
+            // Titles
+            // TODO: localize
+            self.lblAccountNumberTitle.text = "Account number"
+            self.lblNameTitle.text = "Account name"
+            self.lblBankCodeTitle.text = "Bank code"
+
+            // Values
+            self.lblAccountNumberValue.text = transaction.contraAccountNumber
+            self.lblNameValue.text = transaction.contraAccountName
+            self.lblBankCodeValue.text = transaction.contraBankCode
+            
+        } else {
+            self.viewDetail.hidden = true
+            self.viewLoading.hidden = false
+        }
     }
 }

@@ -71,6 +71,7 @@ public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableVie
             let cellDetail = tableView.dequeueReusableCellWithIdentifier("CellDetail", forIndexPath: indexPath) as! ABTransactionDetailCell
 
             cellDetail.configure()
+            cellDetail.displayLoadingOrDetail(self.transaction)
 
             cell = cellDetail
         }
