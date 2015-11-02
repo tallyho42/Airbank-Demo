@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87072EE0B9F01F40F03E93C9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B3607A897276D2180B9CAC /* Pods.framework */; };
 		D7CCFD621BE7606C00A0F93E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCFD611BE7606C00A0F93E /* AppDelegate.swift */; };
 		D7CCFD641BE7606C00A0F93E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCFD631BE7606C00A0F93E /* ViewController.swift */; };
 		D7CCFD671BE7606C00A0F93E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7CCFD651BE7606C00A0F93E /* Main.storyboard */; };
@@ -34,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22F9B1052E8032FBB438A175 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		52B3607A897276D2180B9CAC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6BC3A6225C10A97A5CE6C12 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D7CCFD5E1BE7606C00A0F93E /* airbankDemoSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airbankDemoSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7CCFD611BE7606C00A0F93E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7CCFD631BE7606C00A0F93E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87072EE0B9F01F40F03E93C9 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03A9DA4F31B19910C44ADD5E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D6BC3A6225C10A97A5CE6C12 /* Pods.debug.xcconfig */,
+				22F9B1052E8032FBB438A175 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D7CCFD551BE7606C00A0F93E = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +95,8 @@
 				D7CCFD751BE7606C00A0F93E /* airbankDemoSwiftTests */,
 				D7CCFD801BE7606C00A0F93E /* airbankDemoSwiftUITests */,
 				D7CCFD5F1BE7606C00A0F93E /* Products */,
+				03A9DA4F31B19910C44ADD5E /* Pods */,
+				ECE7C15E668C92C121502ED5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +141,14 @@
 			path = airbankDemoSwiftUITests;
 			sourceTree = "<group>";
 		};
+		ECE7C15E668C92C121502ED5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52B3607A897276D2180B9CAC /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7CCFD861BE7606C00A0F93E /* Build configuration list for PBXNativeTarget "airbankDemoSwift" */;
 			buildPhases = (
+				6D7016EF3A990D522E883F91 /* Check Pods Manifest.lock */,
 				D7CCFD5A1BE7606C00A0F93E /* Sources */,
 				D7CCFD5B1BE7606C00A0F93E /* Frameworks */,
 				D7CCFD5C1BE7606C00A0F93E /* Resources */,
+				D8A24E4244F609C3997A89CC /* Embed Pods Frameworks */,
+				1464F30D3192A5D320865D0C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +277,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1464F30D3192A5D320865D0C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D7016EF3A990D522E883F91 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D8A24E4244F609C3997A89CC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D7CCFD5A1BE7606C00A0F93E /* Sources */ = {
@@ -395,6 +470,7 @@
 		};
 		D7CCFD871BE7606C00A0F93E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6BC3A6225C10A97A5CE6C12 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = airbankDemoSwift/Info.plist;
@@ -406,6 +482,7 @@
 		};
 		D7CCFD881BE7606C00A0F93E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22F9B1052E8032FBB438A175 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = airbankDemoSwift/Info.plist;
@@ -482,6 +559,7 @@
 				D7CCFD881BE7606C00A0F93E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D7CCFD891BE7606C00A0F93E /* Build configuration list for PBXNativeTarget "airbankDemoSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +568,7 @@
 				D7CCFD8B1BE7606C00A0F93E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D7CCFD8C1BE7606C00A0F93E /* Build configuration list for PBXNativeTarget "airbankDemoSwiftUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +577,7 @@
 				D7CCFD8E1BE7606C00A0F93E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
