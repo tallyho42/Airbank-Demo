@@ -36,7 +36,7 @@ public class ABMasterVC: UIViewController {
         self.titleForNavBar = title
     }
 
-    // MARK: Navigation Bar
+    // MARK: Navigation Bar & Status Bar
 
     func configureNavigationBar() {
 
@@ -52,5 +52,9 @@ public class ABMasterVC: UIViewController {
             lblTitle.text = title
             self.navigationItem.titleView = lblTitle
         }
+    }
+
+    public override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }
