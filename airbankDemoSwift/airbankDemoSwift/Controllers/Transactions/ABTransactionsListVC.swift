@@ -21,7 +21,8 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
         self.configureChild(self, title: "List")
 
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        self.tableView.registerNib(UINib(nibName: "ABTransactionListCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CellTransaction")
     }
 
     override func didReceiveMemoryWarning() {

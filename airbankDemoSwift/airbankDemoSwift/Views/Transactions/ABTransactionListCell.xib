@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ABTransactionListCell" customModule="airbankDemoSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icnTransactionIncoming" translatesAutoresizingMaskIntoConstraints="NO" id="K4f-Ym-kQ2">
+                    <rect key="frame" x="10" y="25" width="30" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="bam-cT-NBb"/>
+                        <constraint firstAttribute="height" constant="30" id="gdV-T8-obl"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icnChevronForward" translatesAutoresizingMaskIntoConstraints="NO" id="b8e-G5-Jj4">
+                    <rect key="frame" x="570" y="30" width="20" height="20"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="5sV-bc-QD9"/>
+                        <constraint firstAttribute="height" constant="20" id="dQA-7U-zxd"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8BN-9s-UXB">
+                    <rect key="frame" x="50" y="15" width="500" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="c8Z-6q-vP2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDj-tB-7Wm">
+                    <rect key="frame" x="50" y="43" width="500" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="qTN-EH-DuK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="K4f-Ym-kQ2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="22I-bs-sch"/>
+                <constraint firstItem="b8e-G5-Jj4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2F5-EQ-k16"/>
+                <constraint firstAttribute="trailing" secondItem="b8e-G5-Jj4" secondAttribute="trailing" constant="10" id="Ex9-XL-lxO"/>
+                <constraint firstItem="YDj-tB-7Wm" firstAttribute="leading" secondItem="K4f-Ym-kQ2" secondAttribute="trailing" constant="10" id="KEy-98-2fp"/>
+                <constraint firstItem="YDj-tB-7Wm" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="14" id="Qla-By-7Gb"/>
+                <constraint firstItem="b8e-G5-Jj4" firstAttribute="leading" secondItem="YDj-tB-7Wm" secondAttribute="trailing" constant="20" id="WCw-oS-gCK"/>
+                <constraint firstItem="b8e-G5-Jj4" firstAttribute="leading" secondItem="8BN-9s-UXB" secondAttribute="trailing" constant="20" id="d7k-jp-6H2"/>
+                <constraint firstItem="8BN-9s-UXB" firstAttribute="leading" secondItem="K4f-Ym-kQ2" secondAttribute="trailing" constant="10" id="h5z-eo-a1q"/>
+                <constraint firstItem="K4f-Ym-kQ2" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hW8-yH-hGn"/>
+                <constraint firstItem="8BN-9s-UXB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-14" id="r9V-gY-mqR"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icnChevronForward" width="20" height="20"/>
+        <image name="icnTransactionIncoming" width="30" height="30"/>
+    </resources>
+</document>
