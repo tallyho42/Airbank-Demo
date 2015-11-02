@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableViewDataSource {
+public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: ABMasterTableView!
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
 
         self.configureChild(self, title: "Detail")
 
@@ -22,29 +22,37 @@ class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableViewDataSo
         self.tableView.registerNib(UINib(nibName: "ABTransactionDetailCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CellDetail")
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: Class Initialization
+
+    public class func instantiate() -> ABTransactionsDetailVC {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewControllerWithIdentifier("TransactionDetailVC") as! ABTransactionsDetailVC
+        return viewController
+    }
+
     // MARK: TableView Data Source
 
-    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
 
-    internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         var cell: UITableViewCell? = nil
 
         if indexPath.row == 0 {
-            let cellList = tableView.dequeueReusableCellWithIdentifier("CellTransaction", forIndexPath: indexPath) as! ABTransactionListCell
+            let cellList = tableView.dequeueReusableCellWithIdentifier("CellList", forIndexPath: indexPath) as! ABTransactionListCell
 
             cellList.configureSeparator(true)
 
             cell = cellList
         } else if indexPath.row == 1 {
-            let cellDetail = tableView.dequeueReusableCellWithIdentifier("CellTransaction", forIndexPath: indexPath) as! ABTransactionDetailCell
+            let cellDetail = tableView.dequeueReusableCellWithIdentifier("CellDetail", forIndexPath: indexPath) as! ABTransactionDetailCell
 
             cell = cellDetail
         }
@@ -59,7 +67,7 @@ class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableViewDataSo
 
     // MARK: TableView Delegate
 
-    internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return kCellTransactionListHeight
         } else if indexPath.row == 1 {

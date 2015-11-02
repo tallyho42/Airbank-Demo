@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ABMasterVC: UIViewController {
+public class ABMasterVC: UIViewController {
 
     private weak var child: ABMasterVC? = nil
     private var titleForNavBar: String? = nil
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
@@ -24,7 +24,7 @@ class ABMasterVC: UIViewController {
         self.configureNavigationBar()
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

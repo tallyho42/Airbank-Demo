@@ -53,5 +53,8 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
 
     internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+        let detailVC = ABTransactionsDetailVC.instantiate()
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

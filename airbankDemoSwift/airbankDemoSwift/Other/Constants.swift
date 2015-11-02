@@ -26,4 +26,4 @@ func fontBold(size: CGFloat) -> UIFont {
 // MARK: Sizes
 
 let kCellTransactionListHeight:CGFloat = 80.0
-let kCellTransactionDetailHeight:CGFloat = 80.0
+let kCellTransactionDetailHeight:CGFloat = 83.0
