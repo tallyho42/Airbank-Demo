@@ -22,6 +22,17 @@ public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableVie
 
         self.tableView.registerNib(UINib(nibName: "ABTransactionListCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CellList")
         self.tableView.registerNib(UINib(nibName: "ABTransactionDetailCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CellDetail")
+
+        ABModelAPI.sharedInstance.call(ApiMethod(defaults: ApiMethodDefaults.TransactionDetail, parameters: [ApiParameter(key: "id", value: self.transaction.id)]),
+        success: { response in
+            if let detail = response.object as? Transaction {
+                self.transaction.appendDetailedTransaction(detail)
+                self.tableView.reloadData()
+            }
+        },
+        failure: { error in
+            // display error ...
+        })
     }
 
     override public func didReceiveMemoryWarning() {

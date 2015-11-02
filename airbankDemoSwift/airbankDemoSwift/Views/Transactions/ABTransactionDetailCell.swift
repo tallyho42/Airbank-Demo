@@ -20,4 +20,8 @@ class ABTransactionDetailCell: ABMasterCell {
     func configure() {
         self.selectionStyle = .None
     }
+
+    func displayLoadingOrDetail(transaction: Transaction) {
+
+    }
 }

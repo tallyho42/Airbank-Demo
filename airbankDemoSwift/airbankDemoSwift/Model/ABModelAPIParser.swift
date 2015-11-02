@@ -150,11 +150,21 @@ func apiInstantiateApiClass<T: ApiGeneralObjectProtocol>(T: T.Type, dict: AnyObj
     - here are constant closures which are used to parse default methods when needed
     - these closures are supplied to ApiMethods during their initialization
 */
-let parsePodcastFeed: Parser = { (responseObject: AnyObject?) in
+let parseTransactionList: Parser = { (responseObject: AnyObject?) in
     if let json = responseObject as? APIDict {
         if let items = json["items"] as? [AnyObject] {
             let result = apiInstantiateArrayOfApiClasses(Transaction.self, array: items)
             return ParseResponse(object: result, info: nil)
+        }
+    }
+
+    return ParseResponse(object: nil, info: nil)
+}
+
+let parseTransactionDetail: Parser = { (responseObject: AnyObject?) in
+    if let json = responseObject as? APIDict {
+        if let detail = Transaction(detailApiDict: json) {
+            return ParseResponse(object: detail, info: nil)
         }
     }
 

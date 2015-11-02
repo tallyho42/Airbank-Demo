@@ -27,17 +27,22 @@ enum ApiResponseType {
 */
 enum ApiMethodDefaults {
     case TransactionsList
+    case TransactionDetail
 
     func parserForDefaultsMethod() -> Parser? {
         switch self {
         case .TransactionsList:
-            return parsePodcastFeed
+            return parseTransactionList
+        case .TransactionDetail:
+            return parseTransactionDetail
         }
     }
 
     func requestTypeForDefaultsMethod() -> Alamofire.Method {
         switch self {
         case .TransactionsList:
+            return .GET
+        case .TransactionDetail:
             return .GET
         }
     }
@@ -46,12 +51,16 @@ enum ApiMethodDefaults {
         switch self {
         case .TransactionsList:
             return .JSON
+        case .TransactionDetail:
+            return .JSON
         }
     }
 
     func urlForDefaultsMethod() -> String? {
         switch self {
         case .TransactionsList:
+            return kAPIBaseURL + "transactions"
+        case .TransactionDetail:
             return kAPIBaseURL + "transactions"
         }
     }
@@ -93,6 +102,11 @@ public struct ParseResponse {
 public struct ApiParameter {
     let key: String
     let value: AnyObject
+
+    init(key: String, value: AnyObject) {
+        self.key = key
+        self.value = value
+    }
 }
 
 public struct ApiMethod {
@@ -126,18 +140,12 @@ public struct ApiMethod {
     }
 
     var urlWithParameters: String {
-        if let parameters = self.parameters {
-            var urlString = self.url
-            var sep = urlString.containsString("?") ? "&" : "?"
-            
+        if let parameters = self.parameters, let url = NSURL(string: self.url) {
+            var resultURL = url
             for parameter in parameters {
-                if let encodedKey = parameter.key.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding),
-                    let encodedValue = "\(parameter.value)".stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
-                        urlString += "\(sep)\(encodedKey)=\(encodedValue)"
-                        sep = "&"
-                }
+                resultURL = resultURL.URLByAppendingPathComponent("\(parameter.value)")
             }
-            return urlString
+            return resultURL.absoluteString
         } else {
             return self.url
         }

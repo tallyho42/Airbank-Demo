@@ -55,6 +55,9 @@ public class Transaction: ApiGeneralObjectProtocol {
     let amountInAccountCurrency: Double
 
     var loadedDetail:Bool = false
+    var contraAccountNumber:String? = nil
+    var contraAccountName:String? = nil
+    var contraBankCode:String? = nil
 
     required public init?(apiDict: AnyObject?) {
 
@@ -83,5 +86,41 @@ public class Transaction: ApiGeneralObjectProtocol {
 
             return nil
         }
+    }
+
+    public init?(detailApiDict: AnyObject?) {
+        self.id = 0
+        self.direction = .Incoming
+        self.amountInAccountCurrency = 0
+
+        var apiContraAccountNumber: String? = nil
+        var apiContraAccountName: String? = nil
+        var apiContraBankCode: String? = nil
+
+        if let dict = detailApiDict as? APIDict {
+            if let contraDict = apiSafeDictFromDict(dict, key: "contraAccount") {
+                apiContraAccountNumber = apiSafeStringFromDict(contraDict, key: "accountNumber")
+                apiContraAccountName = apiSafeStringFromDict(contraDict, key: "accountName")
+                apiContraBankCode = apiSafeStringFromDict(contraDict, key: "bankCode")
+            }
+        }
+
+        if let contraAcNum = apiContraAccountNumber, contraAcName = apiContraAccountName, contraBankCode = apiContraBankCode {
+            self.contraAccountNumber = contraAcNum
+            self.contraAccountName = contraAcName
+            self.contraBankCode = contraBankCode
+
+            self.loadedDetail = true
+        } else {
+            return nil
+        }
+    }
+
+    func appendDetailedTransaction(detailedTransaction: Transaction) {
+        self.contraAccountNumber = detailedTransaction.contraAccountNumber
+        self.contraAccountName = detailedTransaction.contraAccountName
+        self.contraBankCode = detailedTransaction.contraBankCode
+
+        self.loadedDetail = true
     }
 }
