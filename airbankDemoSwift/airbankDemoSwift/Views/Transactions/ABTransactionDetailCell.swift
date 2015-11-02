@@ -17,5 +17,7 @@ class ABTransactionDetailCell: ABMasterCell {
     @IBOutlet weak var lblBankCodeTitle: UILabel!
     @IBOutlet weak var lblBankCodeValue: UILabel!
 
-
+    func configure() {
+        self.selectionStyle = .None
+    }
 }

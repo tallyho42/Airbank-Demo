@@ -17,9 +17,11 @@ class ABTransactionListCell: ABMasterCell {
 
     func configureAsListCell() {
         self.imvChevron.hidden = false
+        self.selectionStyle = .Gray
     }
 
     func configureAsDetailCell() {
         self.imvChevron.hidden = true
+        self.selectionStyle = .None
     }
 }

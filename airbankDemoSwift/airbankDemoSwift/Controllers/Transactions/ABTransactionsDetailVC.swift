@@ -49,6 +49,7 @@ public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableVie
             let cellList = tableView.dequeueReusableCellWithIdentifier("CellList", forIndexPath: indexPath) as! ABTransactionListCell
 
             cellList.configureSeparator(true)
+            cellList.configureAsDetailCell()
 
             cell = cellList
         } else if indexPath.row == 1 {

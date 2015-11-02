@@ -41,6 +41,7 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
 
         let isLastCell:Bool = indexPath.row == self.rowCount-1
         cell.configureSeparator(!isLastCell)
+        cell.configureAsListCell()
 
         return cell
     }
