@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import SnapKit
 
 class ABMasterCell: UITableViewCell {
+
+    var viewSeparator: UIView? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +23,23 @@ class ABMasterCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+
+    func configureSeparator(isLastCell: Bool) {
+        if isLastCell {
+            self.viewSeparator?.removeFromSuperview()
+        } else {
+            self.viewSeparator = UIView(frame: CGRectZero)
+            self.viewSeparator?.backgroundColor = UIColor.lightGrayColor()
+            self.contentView.addSubview(self.viewSeparator!)
+
+            self.viewSeparator!.snp_makeConstraints{make in
+                make.left.equalTo(50)
+                make.right.equalTo(-50)
+                make.bottom.equalTo(0)
+                make.height.equalTo(1.0)
+            }
+        }
     }
     
 }

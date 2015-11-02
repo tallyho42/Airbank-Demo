@@ -11,6 +11,10 @@ import UIKit
 class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: ABMasterTableView!
+
+    var rowCount: Int {
+        return 2
+    }
     
     override func viewDidLoad() {
 
@@ -28,11 +32,13 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
     // MARK: TableView Data Source
 
     internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.rowCount
     }
 
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CellTransaction", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("CellTransaction", forIndexPath: indexPath) as! ABTransactionListCell
+
+        cell.configureSeparator(indexPath.row == self.rowCount-1)
 
         return cell
     }
@@ -41,5 +47,9 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
 
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
+    }
+
+    internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
