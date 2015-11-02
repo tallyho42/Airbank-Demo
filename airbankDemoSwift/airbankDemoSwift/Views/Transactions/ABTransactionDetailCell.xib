@@ -30,6 +30,26 @@
                         <constraint firstItem="ghF-cF-DDC" firstAttribute="centerY" secondItem="jwk-GA-2zW" secondAttribute="centerY" id="qhC-BR-6AH"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DOY-Nx-QJk">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tP-6k-rVA">
+                            <rect key="frame" x="50" y="10" width="500" height="63"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="9tP-6k-rVA" firstAttribute="leading" secondItem="DOY-Nx-QJk" secondAttribute="leading" constant="50" id="A02-RZ-PHE"/>
+                        <constraint firstAttribute="trailing" secondItem="9tP-6k-rVA" secondAttribute="trailing" constant="50" id="jan-CU-1rd"/>
+                        <constraint firstItem="9tP-6k-rVA" firstAttribute="top" secondItem="DOY-Nx-QJk" secondAttribute="top" constant="10" id="kzY-nX-mS7"/>
+                        <constraint firstAttribute="bottom" secondItem="9tP-6k-rVA" secondAttribute="bottom" constant="10" id="pEP-BK-gNC"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kse-N9-WoK">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
                     <subviews>
@@ -131,8 +151,12 @@
                 <constraint firstAttribute="bottom" secondItem="kse-N9-WoK" secondAttribute="bottom" id="BIs-0o-g2G"/>
                 <constraint firstAttribute="bottom" secondItem="jwk-GA-2zW" secondAttribute="bottom" id="BvI-VA-Qoc"/>
                 <constraint firstItem="jwk-GA-2zW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DtS-sE-xFn"/>
+                <constraint firstAttribute="trailing" secondItem="DOY-Nx-QJk" secondAttribute="trailing" id="Fb7-k0-t2d"/>
                 <constraint firstItem="jwk-GA-2zW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="d3U-Fc-vTJ"/>
                 <constraint firstItem="kse-N9-WoK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="egi-3T-v0D"/>
+                <constraint firstAttribute="bottom" secondItem="DOY-Nx-QJk" secondAttribute="bottom" id="eyk-yQ-Kf6"/>
+                <constraint firstItem="DOY-Nx-QJk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hCQ-M8-CFb"/>
+                <constraint firstItem="DOY-Nx-QJk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iKm-yz-SWa"/>
                 <constraint firstAttribute="trailing" secondItem="kse-N9-WoK" secondAttribute="trailing" id="mHY-To-dAy"/>
                 <constraint firstItem="kse-N9-WoK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xuj-re-vrD"/>
             </constraints>
@@ -143,9 +167,11 @@
                 <outlet property="lblAccountNumberValue" destination="4Ge-KG-ghE" id="u95-Cj-DYq"/>
                 <outlet property="lblBankCodeTitle" destination="Dbv-d7-jX4" id="Mgt-OT-iOF"/>
                 <outlet property="lblBankCodeValue" destination="qBw-dA-Tf0" id="XoY-hM-VHx"/>
+                <outlet property="lblError" destination="9tP-6k-rVA" id="FkP-zr-XQn"/>
                 <outlet property="lblNameTitle" destination="2LX-f0-b82" id="89Z-0h-riW"/>
                 <outlet property="lblNameValue" destination="TQa-4h-zaU" id="8mB-pd-en1"/>
                 <outlet property="viewDetail" destination="kse-N9-WoK" id="IEe-kX-Bnu"/>
+                <outlet property="viewError" destination="DOY-Nx-QJk" id="YHn-Un-Iac"/>
                 <outlet property="viewLoading" destination="jwk-GA-2zW" id="IUD-SC-MhN"/>
             </connections>
             <point key="canvasLocation" x="273" y="344.5"/>

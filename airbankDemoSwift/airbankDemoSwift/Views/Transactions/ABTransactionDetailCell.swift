@@ -12,6 +12,7 @@ class ABTransactionDetailCell: ABMasterCell {
 
     @IBOutlet weak var viewLoading: UIView!
     @IBOutlet weak var viewDetail: UIView!
+    @IBOutlet weak var viewError: UIView!
 
     @IBOutlet weak var lblAccountNumberTitle: UILabel!
     @IBOutlet weak var lblAccountNumberValue: UILabel!
@@ -19,12 +20,16 @@ class ABTransactionDetailCell: ABMasterCell {
     @IBOutlet weak var lblNameValue: UILabel!
     @IBOutlet weak var lblBankCodeTitle: UILabel!
     @IBOutlet weak var lblBankCodeValue: UILabel!
+    @IBOutlet weak var lblError: UILabel!
 
     func configure() {
         self.selectionStyle = .None
     }
 
     func displayLoadingOrDetail(transaction: Transaction) {
+
+        self.viewError.hidden = true
+
         if transaction.loadedDetail {
             self.viewDetail.hidden = false
             self.viewLoading.hidden = true
@@ -44,5 +49,13 @@ class ABTransactionDetailCell: ABMasterCell {
             self.viewDetail.hidden = true
             self.viewLoading.hidden = false
         }
+    }
+
+    func displayError(errString: String) {
+        self.viewDetail.hidden = true
+        self.viewLoading.hidden = true
+        self.viewError.hidden = false
+
+        self.lblError.text = errString
     }
 }

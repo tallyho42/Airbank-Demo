@@ -13,6 +13,7 @@ public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: ABMasterTableView!
 
     public var transaction: Transaction!
+    public var errString: String? = nil
 
     override public func viewDidLoad() {
 
@@ -25,13 +26,18 @@ public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableVie
 
         ABModelAPI.sharedInstance.call(ApiMethod(defaults: ApiMethodDefaults.TransactionDetail, parameters: [ApiParameter(key: "id", value: self.transaction.id)]),
         success: { response in
+
+            self.errString = nil
+
             if let detail = response.object as? Transaction {
                 self.transaction.appendDetailedTransaction(detail)
                 self.tableView.reloadData()
             }
         },
         failure: { error in
-            // display error ...
+            // TODO: localize
+            self.errString = "Během načítání dotazu nastala chyba. Opakujte prosím akci."
+            self.tableView.reloadData()
         })
     }
 
@@ -71,7 +77,12 @@ public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableVie
             let cellDetail = tableView.dequeueReusableCellWithIdentifier("CellDetail", forIndexPath: indexPath) as! ABTransactionDetailCell
 
             cellDetail.configure()
-            cellDetail.displayLoadingOrDetail(self.transaction)
+
+            if let error = self.errString {
+                cellDetail.displayError(error)
+            } else {
+                cellDetail.displayLoadingOrDetail(self.transaction)
+            }
 
             cell = cellDetail
         }
