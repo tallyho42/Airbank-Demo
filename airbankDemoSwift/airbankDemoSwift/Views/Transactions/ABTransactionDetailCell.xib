@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLT-Bw-WcM">
-                    <rect key="frame" x="50" y="10" width="430" height="21"/>
+                    <rect key="frame" x="50" y="10" width="390" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="PCc-D7-dq4"/>
@@ -23,7 +23,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LX-f0-b82">
-                    <rect key="frame" x="50" y="31" width="432" height="21"/>
+                    <rect key="frame" x="50" y="31" width="392" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="MvR-on-I74"/>
@@ -34,7 +34,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbv-d7-jX4">
-                    <rect key="frame" x="50" y="52" width="430" height="21"/>
+                    <rect key="frame" x="50" y="52" width="390" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="1DV-lc-wmx"/>
@@ -45,7 +45,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQa-4h-zaU">
-                    <rect key="frame" x="490" y="31" width="100" height="21"/>
+                    <rect key="frame" x="450" y="31" width="100" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="1XI-pH-iqz"/>
@@ -57,7 +57,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ge-KG-ghE">
-                    <rect key="frame" x="490" y="10" width="100" height="21"/>
+                    <rect key="frame" x="450" y="10" width="100" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Cxg-uE-rJP"/>
@@ -69,7 +69,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBw-dA-Tf0">
-                    <rect key="frame" x="490" y="52" width="100" height="21"/>
+                    <rect key="frame" x="450" y="52" width="100" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="8yd-zu-vm6"/>
@@ -97,11 +97,19 @@
                 <constraint firstItem="RLT-Bw-WcM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="fwu-Ol-vcc"/>
                 <constraint firstItem="RLT-Bw-WcM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="hgN-zv-WLo"/>
                 <constraint firstItem="Dbv-d7-jX4" firstAttribute="top" secondItem="2LX-f0-b82" secondAttribute="bottom" id="khN-MP-rmo"/>
+                <constraint firstItem="qBw-dA-Tf0" firstAttribute="centerX" secondItem="4Ge-KG-ghE" secondAttribute="centerX" id="neh-XD-Eeh"/>
                 <constraint firstItem="TQa-4h-zaU" firstAttribute="top" secondItem="4Ge-KG-ghE" secondAttribute="bottom" id="qfE-GF-Fg1"/>
-                <constraint firstAttribute="trailing" secondItem="4Ge-KG-ghE" secondAttribute="trailing" constant="10" id="yil-kp-a1G"/>
+                <constraint firstItem="TQa-4h-zaU" firstAttribute="centerX" secondItem="4Ge-KG-ghE" secondAttribute="centerX" id="rV8-Se-CIM"/>
+                <constraint firstAttribute="trailing" secondItem="4Ge-KG-ghE" secondAttribute="trailing" constant="50" id="yil-kp-a1G"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Lev-Fq-9j4"/>
+                    <exclude reference="3hI-Re-56m"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="lblAccountNumberTitle" destination="RLT-Bw-WcM" id="oAM-oM-hdN"/>
                 <outlet property="lblAccountNumberValue" destination="4Ge-KG-ghE" id="u95-Cj-DYq"/>
