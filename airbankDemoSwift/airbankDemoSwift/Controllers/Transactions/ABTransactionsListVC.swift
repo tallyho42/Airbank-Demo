@@ -40,7 +40,7 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCellWithIdentifier("CellTransaction", forIndexPath: indexPath) as! ABTransactionListCell
 
         let isLastCell:Bool = indexPath.row == self.rowCount-1
-        cell.configureSeparator(isLastCell)
+        cell.configureSeparator(!isLastCell)
 
         return cell
     }
