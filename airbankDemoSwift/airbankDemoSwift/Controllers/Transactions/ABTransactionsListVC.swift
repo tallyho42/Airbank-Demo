@@ -12,8 +12,9 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var tableView: ABMasterTableView!
 
+    var transactions: [Transaction] = [Transaction]()
     var rowCount: Int {
-        return 2
+        return self.transactions.count
     }
     
     override func viewDidLoad() {
@@ -23,6 +24,17 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
 
         self.tableView.registerNib(UINib(nibName: "ABTransactionListCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CellTransaction")
+
+        ABModelAPI.sharedInstance.call(ApiMethod(defaults: ApiMethodDefaults.TransactionsList),
+        success: { response in
+            if let arrTransactions = response.object as? [Transaction] {
+                self.transactions = arrTransactions
+                self.tableView.reloadData()
+            }
+        },
+        failure: { error in
+            // display error ...
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,8 +52,11 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCellWithIdentifier("CellTransaction", forIndexPath: indexPath) as! ABTransactionListCell
 
         let isLastCell:Bool = indexPath.row == self.rowCount-1
+        let transaction = self.transactions[indexPath.row]
+
         cell.configureSeparator(!isLastCell)
         cell.configureAsListCell()
+        
 
         return cell
     }

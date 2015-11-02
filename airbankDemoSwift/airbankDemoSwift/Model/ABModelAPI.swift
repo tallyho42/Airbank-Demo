@@ -7,17 +7,13 @@
 //
 
 import Foundation
+import Alamofire
 
 // MARK: Constants
 
 let kAPIBaseURL = "http://demo0569565.mockable.io/"
 
 // MARK: General Enums & Structs
-
-enum ApiRequestType: String {
-    case GET = "GET"
-    case POST = "POST"
-}
 
 enum ApiResponseType {
     case JSON
@@ -39,7 +35,7 @@ enum ApiMethodDefaults {
         }
     }
 
-    func requestTypeForDefaultsMethod() -> ApiRequestType {
+    func requestTypeForDefaultsMethod() -> Alamofire.Method {
         switch self {
         case .TransactionsList:
             return .GET
@@ -64,10 +60,10 @@ enum ApiMethodDefaults {
 struct ApiMethodType {
 
     var url: String
-    var requestType: ApiRequestType
+    var requestType: Alamofire.Method
     var responseType: ApiResponseType
 
-    init(url: String, requestType: ApiRequestType, responseType: ApiResponseType) {
+    init(url: String, requestType: Alamofire.Method, responseType: ApiResponseType) {
         self.url = url
         self.requestType = requestType
         self.responseType = responseType
@@ -121,7 +117,7 @@ public struct ApiMethod {
         return self.type.url
     }
 
-    var requestType: ApiRequestType {
+    var requestType: Alamofire.Method {
         return self.type.requestType
     }
 
@@ -167,5 +163,56 @@ public struct ApiMethod {
         self.type = ApiMethodType(defaults: defaults)
         self.parameters = parameters
         self.parser = defaults.parserForDefaultsMethod()
+    }
+}
+
+// MARK: Api Calls & API Singleton
+
+public class ABModelAPI {
+
+    static let sharedInstance = ABModelAPI()
+
+    public init() {
+
+    }
+
+    func call(method: ApiMethod, success: (response: ParseResponse) -> Void, failure: (error: NSError?) -> Void) {
+
+        if logRequests {
+            log("\(method.description)")
+        }
+
+        // TODO: Can't change request type (Method type is ambiguous), or some better response serialization
+        if method.responseType == .XML {
+            fatalError("XML response not done")
+        } else if method.responseType == .JSON {
+            Alamofire
+                .request(method.requestType, method.urlWithParameters)
+                .validate(statusCode: 200..<300)
+                .responseJSON(completionHandler: {response in
+                    if response.result.isFailure {
+                        //ERROR
+                        if logErrorResponses {
+                            log("ERROR API REQUEST\n \(method.description)\n ERROR: \(response.result.error)")
+                        }
+                        failure(error: response.result.error)
+                    } else {
+                        // SUCCESS
+                        if logSuccessResponses {
+                            log("SUCCESS \(method.description)")
+                        }
+
+                        if let parser = method.parser {
+                            // PARSE FROM ApiMethod
+                            let parseResult = parser(responseObject: response.result.value)
+                            success(response: parseResult)
+                        } else {
+                            // NO PARSING PROVIDED FROM ApiMethod
+                            let emptyParseResult = ParseResponse(object: nil, info: nil)
+                            success(response: emptyParseResult)
+                        }
+                    }
+                })
+        }
     }
 }

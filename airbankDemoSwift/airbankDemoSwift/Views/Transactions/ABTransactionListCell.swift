@@ -24,4 +24,8 @@ class ABTransactionListCell: ABMasterCell {
         self.imvChevron.hidden = true
         self.selectionStyle = .None
     }
+
+    func displayTransaction(transaction: Transaction) {
+        
+    }
 }

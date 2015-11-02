@@ -8,6 +8,12 @@
 
 import UIKit
 
+// MARK: Test Booleans
+
+let logRequests = true
+let logSuccessResponses = true
+let logErrorResponses = true
+
 // MARK: Colors - General
 
 let kColorGreen = UIColor(red: 0.518, green: 0.780, blue: 0.247, alpha: 1.00)
