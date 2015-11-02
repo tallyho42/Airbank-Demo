@@ -25,10 +25,8 @@ class ABMasterCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureSeparator(isLastCell: Bool) {
-        if isLastCell {
-            self.viewSeparator?.removeFromSuperview()
-        } else {
+    func configureSeparator(showSeparator: Bool) {
+        if showSeparator {
             self.viewSeparator = UIView(frame: CGRectZero)
             self.viewSeparator?.backgroundColor = UIColor.lightGrayColor()
             self.contentView.addSubview(self.viewSeparator!)
@@ -39,7 +37,8 @@ class ABMasterCell: UITableViewCell {
                 make.bottom.equalTo(0)
                 make.height.equalTo(1.0)
             }
+        } else {
+            self.viewSeparator?.removeFromSuperview()
         }
     }
-    
 }

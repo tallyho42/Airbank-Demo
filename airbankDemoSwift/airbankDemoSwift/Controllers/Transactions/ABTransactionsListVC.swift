@@ -39,7 +39,8 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CellTransaction", forIndexPath: indexPath) as! ABTransactionListCell
 
-        cell.configureSeparator(indexPath.row == self.rowCount-1)
+        let isLastCell:Bool = indexPath.row == self.rowCount-1
+        cell.configureSeparator(isLastCell)
 
         return cell
     }
@@ -47,7 +48,7 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
     // MARK: TableView Delegate 
 
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        return kCellTransactionListHeight
     }
 
     internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

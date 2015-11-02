@@ -17,7 +17,9 @@ class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableViewDataSo
         self.configureChild(self, title: "Detail")
 
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        self.tableView.registerNib(UINib(nibName: "ABTransactionListCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CellList")
+        self.tableView.registerNib(UINib(nibName: "ABTransactionDetailCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CellDetail")
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,18 +30,43 @@ class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableViewDataSo
     // MARK: TableView Data Source
 
     internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
 
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CellTransaction", forIndexPath: indexPath) as UITableViewCell
 
-        return cell
+        var cell: UITableViewCell? = nil
+
+        if indexPath.row == 0 {
+            let cellList = tableView.dequeueReusableCellWithIdentifier("CellTransaction", forIndexPath: indexPath) as! ABTransactionListCell
+
+            cellList.configureSeparator(true)
+
+            cell = cellList
+        } else if indexPath.row == 1 {
+            let cellDetail = tableView.dequeueReusableCellWithIdentifier("CellTransaction", forIndexPath: indexPath) as! ABTransactionDetailCell
+
+            cell = cellDetail
+        }
+
+        guard let resultCell = cell else {
+            log("error creating cell")
+            return UITableViewCell()
+        }
+
+        return resultCell
     }
 
     // MARK: TableView Delegate
 
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        if indexPath.row == 0 {
+            return kCellTransactionListHeight
+        } else if indexPath.row == 1 {
+            return kCellTransactionDetailHeight
+        } else {
+            log("error determining the height of cell")
+            return 0
+        }
     }
 }

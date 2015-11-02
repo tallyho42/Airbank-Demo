@@ -64,6 +64,12 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imvChevron" destination="b8e-G5-Jj4" id="joY-9P-i3j"/>
+                <outlet property="imvIcon" destination="K4f-Ym-kQ2" id="nG6-dr-yXb"/>
+                <outlet property="lblSubtitle" destination="YDj-tB-7Wm" id="Fia-1g-FBC"/>
+                <outlet property="lblTitle" destination="8BN-9s-UXB" id="fj3-Ms-KHv"/>
+            </connections>
         </view>
     </objects>
     <resources>

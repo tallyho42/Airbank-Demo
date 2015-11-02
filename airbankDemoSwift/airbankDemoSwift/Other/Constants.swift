@@ -22,3 +22,8 @@ let kColorNavBarTint = UIColor.whiteColor()
 func fontBold(size: CGFloat) -> UIFont {
     return UIFont(name: "HelveticaNeue-Bold", size: size)!
 }
+
+// MARK: Sizes
+
+let kCellTransactionListHeight:CGFloat = 80.0
+let kCellTransactionDetailHeight:CGFloat = 80.0
