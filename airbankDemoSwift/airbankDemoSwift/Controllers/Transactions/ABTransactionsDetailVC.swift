@@ -11,6 +11,7 @@ import UIKit
 public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: ABMasterTableView!
+    var refreshControl:UIRefreshControl!
 
     public var transaction: Transaction!
     public var errString: String? = nil
@@ -24,21 +25,11 @@ public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableVie
         self.tableView.registerNib(UINib(nibName: "ABTransactionListCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CellList")
         self.tableView.registerNib(UINib(nibName: "ABTransactionDetailCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CellDetail")
 
-        ABModelAPI.sharedInstance.call(ApiMethod(defaults: ApiMethodDefaults.TransactionDetail, parameters: [ApiParameter(key: "id", value: self.transaction.id)]),
-        success: { response in
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
 
-            self.errString = nil
-
-            if let detail = response.object as? Transaction {
-                self.transaction.appendDetailedTransaction(detail)
-                self.tableView.reloadData()
-            }
-        },
-        failure: { error in
-            // TODO: localize
-            self.errString = "Během načítání dotazu nastala chyba. Opakujte prosím akci."
-            self.tableView.reloadData()
-        })
+        self.loadDetail()
     }
 
     override public func didReceiveMemoryWarning() {
@@ -53,6 +44,35 @@ public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableVie
         let viewController = storyboard.instantiateViewControllerWithIdentifier("TransactionDetailVC") as! ABTransactionsDetailVC
         viewController.transaction = transaction
         return viewController
+    }
+
+    // MARK: Loading & refresh control
+
+    func loadDetail() {
+        ABModelAPI.sharedInstance.call(ApiMethod(defaults: ApiMethodDefaults.TransactionDetail, parameters: [ApiParameter(key: "id", value: self.transaction.id)]),
+            success: { response in
+
+                self.errString = nil
+
+                if let detail = response.object as? Transaction {
+                    self.transaction.appendDetailedTransaction(detail)
+                    self.refreshControl.endRefreshing()
+                    self.tableView.reloadData()
+                }
+            },
+            failure: { error in
+                // TODO: localize
+                self.errString = "Během načítání dotazu nastala chyba. Opakujte prosím akci."
+                self.refreshControl.endRefreshing()
+                self.tableView.reloadData()
+        })
+    }
+
+    func refresh(sender:AnyObject)
+    {
+        self.transaction.loadedDetail = false
+        self.tableView.reloadData()
+        self.loadDetail()
     }
 
     // MARK: TableView Data Source
