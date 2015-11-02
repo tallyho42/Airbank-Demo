@@ -49,14 +49,14 @@ enum TransactionDirection {
     }
 }
 
-class Transaction: ApiGeneralObjectProtocol {
+public class Transaction: ApiGeneralObjectProtocol {
     let id:Int
     let direction: TransactionDirection
     let amountInAccountCurrency: Double
 
     var loadedDetail:Bool = false
 
-    required init?(apiDict: AnyObject?) {
+    required public init?(apiDict: AnyObject?) {
 
         var apiId: Int? = nil
         var apiDirection: TransactionDirection? = nil

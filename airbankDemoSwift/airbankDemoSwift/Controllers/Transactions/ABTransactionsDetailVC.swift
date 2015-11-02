@@ -11,7 +11,9 @@ import UIKit
 public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: ABMasterTableView!
-    
+
+    public var transaction: Transaction!
+
     override public func viewDidLoad() {
 
         self.configureChild(self, title: "Detail")
@@ -29,9 +31,10 @@ public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableVie
 
     // MARK: Class Initialization
 
-    public class func instantiate() -> ABTransactionsDetailVC {
+    public class func instantiate(transaction: Transaction) -> ABTransactionsDetailVC {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewControllerWithIdentifier("TransactionDetailVC") as! ABTransactionsDetailVC
+        viewController.transaction = transaction
         return viewController
     }
 
@@ -50,6 +53,7 @@ public class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableVie
 
             cellList.configureSeparator(true)
             cellList.configureAsDetailCell()
+            cellList.displayTransaction(self.transaction)
 
             cell = cellList
         } else if indexPath.row == 1 {
