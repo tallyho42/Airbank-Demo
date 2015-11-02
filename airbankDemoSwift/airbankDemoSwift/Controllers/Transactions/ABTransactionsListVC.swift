@@ -56,7 +56,7 @@ class ABTransactionsListVC: ABMasterVC, UITableViewDelegate, UITableViewDataSour
 
         cell.configureSeparator(!isLastCell)
         cell.configureAsListCell()
-        
+        cell.displayTransaction(transaction)
 
         return cell
     }

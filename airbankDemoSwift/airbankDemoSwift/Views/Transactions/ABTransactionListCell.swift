@@ -26,6 +26,8 @@ class ABTransactionListCell: ABMasterCell {
     }
 
     func displayTransaction(transaction: Transaction) {
-        
+        self.imvIcon.image = transaction.direction.iconForCell()
+        self.lblTitle.text = ABMasterVC.formatAmount(transaction.amountInAccountCurrency, decimals: true, currency: true)
+        self.lblSubtitle.text = transaction.direction.titleForCell()
     }
 }

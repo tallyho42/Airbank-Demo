@@ -28,6 +28,17 @@ enum TransactionDirection {
         }
     }
 
+    func titleForCell() -> String {
+        // TODO: localize
+
+        switch self {
+        case .Incoming:
+            return "Incoming"
+        case .Outgoing:
+            return "Outgoing"
+        }
+    }
+
     func iconForCell() -> UIImage {
         switch self {
         case .Incoming:

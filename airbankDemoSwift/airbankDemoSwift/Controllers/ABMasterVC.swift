@@ -57,4 +57,25 @@ public class ABMasterVC: UIViewController {
     public override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
+
+    // MARK: Formatting
+
+    class func formatAmount(amount: Double, decimals: Bool, currency: Bool) -> String {
+        // This function could and should be done way better, but for this demo purpose it's propably fine
+        let amountFormatter = NSNumberFormatter()
+
+        var format = "00"
+
+        if decimals {
+            format += ".00"
+        }
+
+        if currency {
+            format += " Kč"
+        }
+
+        amountFormatter.positiveFormat = format
+        amountFormatter.negativeFormat = "- \(format)"
+        return amountFormatter.stringFromNumber(NSNumber(double: amount))!
+    }
 }
