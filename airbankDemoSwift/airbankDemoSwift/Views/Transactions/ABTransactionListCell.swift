@@ -6,4 +6,8 @@
 //  Copyright © 2015 Premysl Semerad. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class ABTransactionListCell: ABMasterCell {
+
+}

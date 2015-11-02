@@ -17,12 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dcK-9m-Oh4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dcK-9m-Oh4" customClass="ABMasterTableView" customModule="airbankDemoSwift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="SxS-mB-jnx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="SxS-mB-jnx" customClass="ABTransactionDetailCell" customModule="airbankDemoSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SxS-mB-jnx" id="VBe-TC-SqQ">
@@ -33,11 +33,24 @@
                                         <animations/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="0sB-P4-ejJ" id="HDz-fR-XMX"/>
+                                    <outlet property="delegate" destination="0sB-P4-ejJ" id="NpE-7n-hyu"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dcK-9m-Oh4" firstAttribute="top" secondItem="upS-3R-IfO" secondAttribute="top" id="I11-2B-Uf3"/>
+                            <constraint firstItem="dcK-9m-Oh4" firstAttribute="leading" secondItem="upS-3R-IfO" secondAttribute="leading" id="U5d-vs-cSa"/>
+                            <constraint firstAttribute="trailing" secondItem="dcK-9m-Oh4" secondAttribute="trailing" id="Z6g-Tx-PJM"/>
+                            <constraint firstItem="FhO-P2-ISt" firstAttribute="top" secondItem="dcK-9m-Oh4" secondAttribute="bottom" id="liw-xg-tuM"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="dcK-9m-Oh4" id="DuJ-HM-nZU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fa0-eK-HmY" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,12 +68,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dBi-Uj-Gtv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dBi-Uj-Gtv" customClass="ABMasterTableView" customModule="airbankDemoSwift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="80" id="kBA-tO-aYS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellTransaction" rowHeight="80" id="kBA-tO-aYS" customClass="ABTransactionListCell" customModule="airbankDemoSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kBA-tO-aYS" id="1Ic-wz-o1R">
@@ -87,12 +100,25 @@
                                         <animations/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="a0T-ce-EL9" id="eRt-zD-wCi"/>
+                                    <outlet property="delegate" destination="a0T-ce-EL9" id="XwO-8b-Wlu"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dBi-Uj-Gtv" firstAttribute="top" secondItem="an9-gH-hSz" secondAttribute="top" id="3Lc-VO-HEQ"/>
+                            <constraint firstAttribute="trailing" secondItem="dBi-Uj-Gtv" secondAttribute="trailing" id="OCV-UI-cuh"/>
+                            <constraint firstItem="dBi-Uj-Gtv" firstAttribute="leading" secondItem="an9-gH-hSz" secondAttribute="leading" id="Sx4-Fr-kFb"/>
+                            <constraint firstItem="Oxw-bq-Sv7" firstAttribute="top" secondItem="dBi-Uj-Gtv" secondAttribute="bottom" id="TvA-VP-rrT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vzN-fg-Ha6"/>
+                    <connections>
+                        <outlet property="tableView" destination="dBi-Uj-Gtv" id="5rl-kh-cBb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yeS-47-J3C" sceneMemberID="firstResponder"/>
             </objects>

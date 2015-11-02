@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ABTransactionsDetailVC: ABMasterVC {
+class ABTransactionsDetailVC: ABMasterVC, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
 
         self.configureChild(self, title: "Detail")
@@ -21,5 +23,23 @@ class ABTransactionsDetailVC: ABMasterVC {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: TableView Data Source
+
+    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("CellTransaction", forIndexPath: indexPath) as UITableViewCell
+
+        return cell
+    }
+
+    // MARK: TableView Delegate
+
+    internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
     }
 }
